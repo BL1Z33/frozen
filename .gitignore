@@ -1,0 +1,7 @@
+# gitignore for frozen
+
+.gitignore
+README.md
+frozencfg.py
+__pycache__/
+vscode/
