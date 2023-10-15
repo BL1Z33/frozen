@@ -1,0 +1,29 @@
+import os
+modules = ["colorify"]
+for m in modules: os.system(f"pip install {m}")
+from colorify import *
+init_colorify()
+os.system(f"title frozen")
+def cmd(command):
+    if command.startswith("print"):
+        print(command.replace("print ",""))
+    if command.startswith("?"):
+        print("print [text]")
+        print("?")
+    else:
+        print(colorify(f"{command} is invalid. Type ? to see all the commands.", C.red))
+while True:
+    dir = os.getcwd()
+    command = input(colorify(f"{dir}>> ", C.blue))
+    if command.startswith("@"):
+        file = command.strip("@")
+        file += ".fzn"
+        if os.path.exists(file):
+            with open(file,"r") as f:
+                f = f.read().splitlines()
+            for line in f:
+                cmd(line)
+        else:
+            print(colorify(f"The file {file} does not exist.", C.red))
+    else:
+        cmd(command)
