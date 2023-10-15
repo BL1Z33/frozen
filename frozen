@@ -9,6 +9,7 @@ def cmd(command):
         print(command.replace("print ",""))
     if command.startswith("?"):
         print("print [text]")
+        print("@[file]")
         print("?")
     else:
         print(colorify(f"{command} is invalid. Type ? to see all the commands.", C.red))
